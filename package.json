@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Generates a page using Node.js and Inquirer",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csarmiento17/team-profile-generator.git"
+  },
+  "author": "Jay Sarmiento",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/csarmiento17/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/csarmiento17/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  }
+}
