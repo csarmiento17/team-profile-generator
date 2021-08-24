@@ -19,7 +19,8 @@
     "url": "https://github.com/csarmiento17/team-profile-generator/issues"
   },
   "homepage": "https://github.com/csarmiento17/team-profile-generator#readme",
-  "dependencies": {
-    "inquirer": "^8.1.2"
+  "devDependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.0.6"
   }
 }
