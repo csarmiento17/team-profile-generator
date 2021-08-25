@@ -1,33 +1,92 @@
 const generateTeam = (team) => {
-  console.log("Team:", team);
-  return `
-  
-  
-  ${team
-    .filter((employee) => employee.getRole() === "Manager")
-    .map(({ name, id, email }) => {
-      return `
-      <div class="card" style="width: 18rem;">
-            <div class="card-header">
-           ${name} <br/>
-           <i class="fas fa-mug-hot"></i>Manager</div>
-           <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${id}</li>
-            <li class="list-group-item">Email: <span id="email"><a href="mailto:${email}">${email}</a></span></li>
-           
-            </ul>
+  console.log("Start generating Team:", team);
+  const html = [];
+
+  const createManager = (manager) => {
+    const { name, id, email, officeNo } = manager;
+    let mgr = `     
+        <div class="card m-4 col-sm-6" style="width: 18rem;">
+            <div class="card-header bg-primary text-white  text-center">
+              <span class="fs-3 text-center">${name.toUpperCase()}<span> <br/>
+              <i class="fas fa-mug-hot"></i><span class="fs-5 text-center">${manager.getRole()}</span>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${id}</li>
+                <li class="list-group-item">Email: <span id="email"><a href="mailto:${email}">${email}</a></span></li>
+                <li class="list-group-item">Office Number: ${officeNo}</li>
+              </ul>
+            </div>
         </div>
     `;
-    })
-    .join("")}
-`;
+    html.push(mgr);
+  };
+
+  const createEngineer = (engineer) => {
+    const { name, id, email, github } = engineer;
+    let engr = ` 
+        <div class="card m-4 col-sm-6" style="width: 18rem;">
+            <div class="card-header bg-primary text-white  text-center">
+              <span class="fs-3 text-center">${name.toUpperCase()}<span> <br/>
+              <i class="fas fa-mug-hot"></i><span class="fs-5 text-center">${engineer.getRole()}</span>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${id}</li>
+                <li class="list-group-item">Email: <span id="email"><a href="mailto:${email}">${email}</a></span></li>
+                <li class="list-group-item">Github: <a target="_blank" href="https://github.com/${github}">${github}</a></li>
+              </ul>
+            </div>
+        </div>
+    `;
+    html.push(engr);
+  };
+
+  const createIntern = (student) => {
+    const { name, id, email, school } = student;
+    let intern = `  
+        <div class="card m-4 col-sm-6" style="width: 18rem;">
+            <div class="card-header bg-primary text-white  text-center">
+            <span class="fs-3 text-center">${name.toUpperCase()}<span> <br/>
+            <i class="fas fa-mug-hot"></i><span class="fs-5 text-center">${student.getRole()}</span>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${id}</li>
+                <li class="list-group-item">Email: <span id="email"><a href="mailto:${email}">${email}</a></span></li>
+                <li class="list-group-item">School: ${school}</li>
+              </ul>
+            </div>
+        </div>        
+    `;
+    html.push(intern);
+  };
+
+  html.push(
+    team
+      .filter((item) => item.getRole() === "Manager")
+      .map((manager) => createManager(manager))
+      .join("")
+  );
+
+  html.push(
+    team
+      .filter((item) => item.getRole() === "Engineer")
+      .map((engineer) => createEngineer(engineer))
+      .join("")
+  );
+
+  html.push(
+    team
+      .filter((item) => item.getRole() === "Intern")
+      .map((intern) => createIntern(intern))
+      .join("")
+  );
+
+  return html.join("");
 };
 
-// export function to generate entire page
 module.exports = (team) => {
-  // destructure page data by section
-  //const { projects, about, ...header } = templateData;
-  //console.log("templateData", team);
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -47,21 +106,25 @@ module.exports = (team) => {
     <header>
       <div class="container flex-row justify-space-between align-center py-3">
        
-        <nav class="flex-row">        
-          <h1 class="page-title text-secondary bg-dark py-2 px-3">My Team</h1>
+        <nav class="flex-center  text-center">        
+          <h1 class="bg-primary text-white">My Team</h1>
         </nav>
       </div>
     </header>
-    <main class="container my-5">
-    <div>
-    ${generateTeam(team)}
+    <div class="container">
+      <div class="d-flex flex-row flex-sm-wrap">
+        ${generateTeam(team)}
+      </div>
     </div>
-  
-    </main>
+    
    
     <footer class="container text-center py-3">
       <h3 class="text-dark">&copy;2021 My Team</h3>
     </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
   </html>
   `;

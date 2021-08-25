@@ -143,7 +143,7 @@ createEngineer = () => {
 };
 
 createIntern = () => {
-  console.log("===Adding Engineer===");
+  console.log("===Adding Intern===");
   inquirer
     .prompt([
       {
@@ -187,10 +187,10 @@ createIntern = () => {
       },
       {
         type: "text",
-        name: "intGithub",
+        name: "intSchool",
         message: "Enter school (Required)",
-        validate: (intGithub) => {
-          if (intGithub) {
+        validate: (intSchool) => {
+          if (intSchool) {
             return true;
           } else {
             console.log("Please enter the school!");
@@ -232,5 +232,4 @@ selectTeam = () => {
 
 let generateHTML = () => {
   fs.writeFileSync(directory, generateTemplate(myTeam), "utf-8");
-  // console.log("Directory:", directory);
 };
