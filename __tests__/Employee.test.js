@@ -7,7 +7,7 @@ test("it should get the constructor values for the Employee object", () => {
   expect(emp.email).toBe("mggs@gmail.com");
 });
 
-test("it should  get the name from the getName() method", () => {
+test("it should get the name from the getName() method", () => {
   expect(emp.getName()).toBe("Grace");
 });
 
@@ -15,7 +15,7 @@ test("it should get the id from the getId() method", () => {
   expect(emp.getId()).toBe("54321");
 });
 
-test("it should  get the email from the getEmail() method", () => {
+test("it should get the email from the getEmail() method", () => {
   expect(emp.getEmail()).toBe("mggs@gmail.com");
 });
 

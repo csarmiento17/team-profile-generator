@@ -15,3 +15,11 @@ npm install
 ## Questions
 
 - If you have questions you may reach me at my [Github](https://github.com/csarmiento17)
+
+## Demo link
+
+[YouTube](https://youtu.be/PDadmZiEQ5k)
+
+## Screenshot
+
+![Team Profile Generator](./profilegenerator.PNG)
