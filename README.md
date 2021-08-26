@@ -22,4 +22,4 @@ npm install
 
 ## Screenshot
 
-![Team Profile Generator](./profilegenerator.PNG)
+![Team Profile Generator](./site.png)
